@@ -1,12 +1,8 @@
-FROM ubuntu:xenial
+FROM fedora:24
+MAINTAINER Seth Jennings <sethdjennings@gmail.com>
 
-RUN apt-get update && apt-get install -yq --allow-unauthenticated\
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common && add-apt-repository ppa:certbot/certbot -y && apt-get update && apt-get install certbot -yq --allow-unauthenticated
-#RUN mkdir /etc/letsencrypt
+RUN dnf install certbot -y && dnf clean all
+RUN mkdir /etc/letsencrypt
 
 CMD ["/entrypoint.sh"]
 

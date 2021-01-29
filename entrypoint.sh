@@ -1,10 +1,15 @@
 #!/bin/bash
 
-if [[ -z $EMAIL || -z $DOMAINS || -z $SECRET || -z $DEPLOYMENT ]]; then
-	echo "EMAIL, DOMAINS, SECERT, and DEPLOYMENT env vars required"
+# if [[ -z $EMAIL || -z $DOMAINS || -z $SECRET || -z $DEPLOYMENT ]]; then
+# 	echo "EMAIL, DOMAINS, SECERT, and DEPLOYMENT env vars required"
+# 	env
+# 	exit 1
+# fi
+
+DEPLOYMENT=$HOSTNAME
+echo "EMAIL, DOMAINS, SECERT, and DEPLOYMENT env found"
 	env
-	exit 1
-fi
+echo " my setting $DEPLOYMENT"
 
 NAMESPACE=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
 
